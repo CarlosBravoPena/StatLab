@@ -4,7 +4,7 @@ fix(Auto)
 Auto=read.table("Auto.data",header=T,na.strings="?")
 fix(Auto)
 dim(Auto)
-Auto=na.omit(Auto)
+describe(Auto)
 dim(Auto)
 names(Auto)
 
@@ -51,3 +51,37 @@ college=data.frame(college,Elite)
 
 plot(Elite,Outstate,col="red",varwidth=T,xlab="Elite",ylab="Outstate")
 
+#uso de par(mfrow)
+
+names(college)
+attach(college)
+
+par(mfrow=c(1,4))
+hist(Apps,main="Histograma Apps")
+hist(Accept,main="Aceptados")
+plot(Elite,Outstate,col="red",varwidth=T,xlab="Elite",ylab="Outstate")
+plot(Private,Outstate,col="red",varwidth=T,xlab="Private",ylab="Outstate")
+
+attach(Auto)
+
+names(Auto)
+head(Auto)
+range(Auto)
+range(Auto$cylinders)
+summary(Auto)
+describe(Auto)
+#removiendo filas
+
+library(psych)
+install.packages("psych",lib="C:/users/Carlos Bravo/desktop/R/packages")
+Autoshort=Auto[-c(1:10),]
+describe(Autoshort)
+Auto
+pairs(~mpg+cylinders+horsepower+weight+acceleration, Auto)
+#ejercicio MASS con datos Boton
+library(MASS)
+Boston=read.table("Boston")
+Boston
+fix(Boston)
+?Boston
+pairs(Boston, labels = colnames(Boston), main = "Pairs matrix")
